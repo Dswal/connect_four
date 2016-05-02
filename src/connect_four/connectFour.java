@@ -1,5 +1,8 @@
 package connect_four;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 
@@ -19,20 +22,62 @@ public class connectFour {
 
 	public static void main(String[] args) {
 
-		// Creates the initial board visually, setting all values to .
-		// This creates an elegant looking board visually
-		// Without creating this board first, during the scanner any input submitted will not be valid
-		for(int i = 0; i < 6; i++){
-	        for(int j = 0; j < 7; j++){
-	            board[i][j] = ".";
-	            System.out.print(board[i][j] + " ");
-	        }
-	        System.out.print("\n");
-	    }
+	    Scanner startingIn = new Scanner(System.in);
 
+		System.out.println("Welcome to Connect Four.");
+		System.out.println("Would you like to load a game?");
+		String startingInput = startingIn.next();
+
+		if (startingInput.equalsIgnoreCase("yes")) {
+			try {
+				loadFrom("save.txt");
+				printGrid();
+			} catch (FileNotFoundException e) {
+				System.err.println("Could not load game: " + e.getLocalizedMessage());
+				e.printStackTrace();
+			}
+		}
+		else
+			// Creates the initial board visually, setting all values to .
+			// This creates an elegant looking board visually
+			// Without creating this board first, during the scanner any input submitted will not be valid
+			for(int i = 0; i < 6; i++){
+		        for(int j = 0; j < 7; j++){
+		            board[i][j] = ".";
+		            System.out.print(board[i][j] + " ");
+		        }
+		        System.out.print("\n");
+		    };
+
+
+
+//		// Creates the initial board visually, setting all values to .
+//		// This creates an elegant looking board visually
+//		// Without creating this board first, during the scanner any input submitted will not be valid
+//		for(int i = 0; i < 6; i++){
+//	        for(int j = 0; j < 7; j++){
+//	            board[i][j] = ".";
+//	            System.out.print(board[i][j] + " ");
+//	        }
+//	        System.out.print("\n");
+//	    }
+
+		System.out.print("\n");
 		// This is to display the lines/characters to select
-	    System.out.print("\n");
-        System.out.print("a b c d e f g");
+        System.out.print("a b c d e f g \n");
+	    System.out.print("Player 1 use lowercase a/b/c/d/e/f/g \n");
+	    System.out.print("Player 2 use UPPERCASE A/B/C/D/E/F/G \n");
+//	    System.out.print("\n");
+//
+//		try {
+//			loadFrom("save.txt");
+//			printGrid();
+//		} catch (FileNotFoundException e) {
+//			System.err.println("Could not load game: " + e.getLocalizedMessage());
+//			e.printStackTrace();
+//		}
+
+
 	    // Opens up the scanner to allow input for the user
 	    Scanner in = new Scanner(System.in);
 
@@ -63,23 +108,40 @@ public class connectFour {
 
 	        printGrid();
 
+			try {
+				saveTo("save.txt");
+			} catch (FileNotFoundException e) {
+				System.err.println("Could not save game: " + e.getLocalizedMessage());
+				e.printStackTrace();
+			}
+
 	    }
 
 
 	}
 
-	public static void printGrid(){
+	public static String[] printGrid(){
 
 		// Loop to print out the grid
+		String lines[] = new String[6];
+
 
 	    for(int i = 0; i < 6; i++){
-	        for(int j = 0; j<7; j++){
+	    	StringBuilder str = new StringBuilder();
+	        for(int j = 0; j < 7; j++){
 	            System.out.print(board[i][j] + " ");
+	            str.append(board[i][j] + " ");
 	        }
 	        System.out.print("\n");
+	        lines[i] = str.toString();
 	    }
 	    System.out.print("\n");
-        System.out.print("a b c d e f g");
+        System.out.print("a b c d e f g \n");
+	    System.out.print("\n");
+	    System.out.print("Player 1 use lowercase a/b/c/d/e/f/g \n");
+	    System.out.print("Player 2 use UPPERCASE A/B/C/D/E/F/G \n");
+	    System.out.print("\n");
+		return lines;
 	}
 
 	public static void putPlayerOnGrid(int position, String playerXorO){
@@ -94,7 +156,7 @@ public class connectFour {
 
 	            System.out.println("Placing: " + playerXorO + " above another slot");
 
-	            if (i  - 1 >= 0) {
+	            if (i  - 1 > 0) {
 	                board[i - 1][position] = playerXorO;
 	            } else {
 	                System.out.println("Invalid Move!");
@@ -151,4 +213,48 @@ public class connectFour {
 	        }
 	    }
 	}
+
+
+	public static void saveTo(String fileName) throws FileNotFoundException{
+		try (PrintWriter out = new PrintWriter(fileName)) {
+			String[] rows = printGrid();
+			for (String r : rows) {
+				out.print(r.replaceAll("\\.", "."));
+				out.println();
+			}
+		}
+
+	}  // automatically closes 'out' here
+
+	public static void loadFrom(String fileName) throws FileNotFoundException{
+		Scanner in = new Scanner(new FileReader(fileName));
+
+//		while(in.hasNext()){
+//			for (int row = 0; row <3; row++){
+//				for (int col = 0; col <3; col++){
+//					board[row][col] = in.next();
+//				}
+//			}
+//		}
+
+		while(in.hasNext()){
+			for(int i = 0; i < 6; i++){
+				for(int j = 0; j < 7; j++){
+					board[i][j] = in.next();
+				}
+			}
+		}
+
+
+
+//		while(in.hasNext()){
+//	    for(int i = 0; i < 6; i++){
+//	        for(int j = 0; j<7; j++){
+//	        	 out.print(board[i][j] + " ");
+//	        }
+//	        out.print("\n");
+//	    }
+//		}
+	}
+
 }
