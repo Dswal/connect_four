@@ -130,8 +130,8 @@ public class connectFour {
 	            } else {
 	                System.out.println("Invalid Move!");
 	            }
-//	        return;
-	      
+	        return;
+
 	        }
 // 			This checks to see if the  column selected is equal to the bottom column, do not subtract 1 to the column
 //	        This avoids missing the row at the bottom due to arrays being 1 below a number. Eg. 0/1/2/3/4/5, instead of 1/2/3/4/5/6
