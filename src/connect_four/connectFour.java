@@ -86,6 +86,7 @@ public class connectFour {
 				System.err.println("Could not save game: " + e.getLocalizedMessage());
 				e.printStackTrace();
 			}
+		    checkWin();
 	    }
 	}
 
@@ -125,7 +126,7 @@ public class connectFour {
 
 	            System.out.println("Placing: " + playerXorO + " above another slot");
 
-	            if (i  - 1 > 0) {
+	            if (i  - 1 >= 0) {
 	                board[i - 1][position] = playerXorO;
 	            } else {
 	                System.out.println("Invalid Move!");
@@ -140,7 +141,7 @@ public class connectFour {
 	            board[i][position] = playerXorO;
 	        }
 	    }
-	    checkWin();
+//	    checkWin();
 	}
 
 	public static void checkWin(){
