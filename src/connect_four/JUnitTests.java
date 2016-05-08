@@ -61,20 +61,21 @@ public class JUnitTests {
 	}
 
 	/** A correct game where player 1 wins along a diagonal. */
-//	@Test
-//	public void testWinner1Diag() {
-//		ConnectFour.putPlayerOnGrid(0,"O");
-//		ConnectFour.putPlayerOnGrid(1,"X");
-//		ConnectFour.putPlayerOnGrid(1,"O");
-//		ConnectFour.putPlayerOnGrid(2,"O");
-//		ConnectFour.putPlayerOnGrid(2,"O");
-//		ConnectFour.putPlayerOnGrid(2,"O");
-//		ConnectFour.putPlayerOnGrid(3,"X");
-//		ConnectFour.putPlayerOnGrid(3,"X");
-//		ConnectFour.putPlayerOnGrid(3,"X");
-//		ConnectFour.putPlayerOnGrid(3,"O");
-//		assertEquals(2, ConnectFour.checkWin());
-//	}
+	@Test
+	public void testWinner1Diag() {
+		ConnectFour.putPlayerOnGrid(0,"O");
+		ConnectFour.putPlayerOnGrid(1,"X");
+		ConnectFour.putPlayerOnGrid(1,"O");
+		ConnectFour.putPlayerOnGrid(2,"O");
+		ConnectFour.putPlayerOnGrid(2,"O");
+		ConnectFour.putPlayerOnGrid(2,"O");
+		ConnectFour.putPlayerOnGrid(3,"X");
+		ConnectFour.putPlayerOnGrid(3,"X");
+		ConnectFour.putPlayerOnGrid(3,"X");
+		ConnectFour.putPlayerOnGrid(3,"O");
+		TextUI.printGrid();
+		assertEquals(1, ConnectFour.checkWin());
+	}
 
 
 	@Test

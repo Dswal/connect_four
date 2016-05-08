@@ -127,7 +127,7 @@ public class ConnectFour {
 	    								&& board[j][i] == board[j+2][i+2]
 	    								&& board[j][i] == board[j+3][i+3]){
 	                System.out.println("X Wins! Through a Diagonal line up to the left!");
-	                return 1;
+	                return 2;
 	    		}
 
 	    	}
@@ -139,6 +139,7 @@ public class ConnectFour {
 	    								&& board[j][i] == board[j+2][i-2]
 	    								&& board[j][i] == board[j+3][i-3]){
 	                System.out.println("O Wins! Through a Diagonal line up to the right!");
+	                return 1;
 	    		}
 
 	    	}
@@ -150,6 +151,7 @@ public class ConnectFour {
 	    								&& board[j][i] == board[j+2][i-2]
 	    								&& board[j][i] == board[j+3][i-3]){
 	                System.out.println("X Wins! Through a Diagonal line up to the right!");
+	                return 2;
 	    		}
 
 	    	}
