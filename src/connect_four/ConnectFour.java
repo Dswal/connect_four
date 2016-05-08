@@ -6,36 +6,19 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 
-// TODO Find a way to work out diagonal winner
-
+/**
+ * This is connect four for two players.
+ *
+ * The goal is to 4 cells in a row either horizontally, vertically or diagonally.
+ * There is a save and load feature. The game will automatically save after each turn
+ *
+ *
+ * @author David Swallow
+ */
 
 public class ConnectFour {
 
-	public static String[][] board = new String[7][7]; //6 down 7 wide
-
-	public static String[] printGrid(){
-
-		// Loop to print out the grid
-		String lines[] = new String[6];
-
-
-	    for(int i = 0; i < 6; i++){
-	    	StringBuilder str = new StringBuilder();
-	        for(int j = 0; j < 7; j++){
-	            System.out.print(board[i][j] + " ");
-	            str.append(board[i][j] + " ");
-	        }
-	        System.out.print("\n");
-	        lines[i] = str.toString();
-	    }
-	    System.out.print("\n");
-        System.out.print("a b c d e f g \n");
-	    System.out.print("\n");
-	    System.out.print("Player 1 use lowercase a/b/c/d/e/f/g to place a peice\n");
-	    System.out.print("Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice\n");
-	    System.out.print("\n");
-		return lines;
-	}
+	public static String[][] board = new String[7][7]; //7 down 7 wide
 
 	public static void putPlayerOnGrid(int position, String playerXorO){
 
@@ -71,7 +54,6 @@ public class ConnectFour {
 		// Make sure that the values of verticalLine and horizontalLine are empty before checking who wins
 	    String verticalLine = "";
 	    String horizontalLine = "";
-	    String diagonalLine = "";
 
         // Check for Vertical win in each column
 	    for(int j = 0; j < 7; j++) {
@@ -121,6 +103,7 @@ public class ConnectFour {
 
 	    	}
 	    }
+	    // Upper Left to Lower Right
 	    for(int i = 0; i < 4; i++){
 	    	for(int j = 0; j < 4; j++){
 	    		if(board[j][i] == "X" && board[j][i] == board[j+1][i+1]
