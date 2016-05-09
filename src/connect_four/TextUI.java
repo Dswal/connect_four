@@ -5,12 +5,22 @@ import java.util.Scanner;
 
 public class TextUI {
 
-	public static int turn;
+	public int turn;
+	private ConnectFour game;
+
+	public TextUI(ConnectFour g) {
+		 game = g;
+	}
 
 	public static void main(String[] args) {
+		ConnectFour game = new ConnectFour();
+		TextUI textUI = new TextUI(game);
+		textUI.playGame();
 
-
-	    Scanner startingIn = new Scanner(System.in);
+	}
+	
+	public void playGame(){
+		Scanner startingIn = new Scanner(System.in);
 
 		System.out.println("Welcome to Connect Four.");
 		System.out.println("Would you like to load a game?");
@@ -19,8 +29,7 @@ public class TextUI {
 		// Load Game
 		if (startingInput.equalsIgnoreCase("yes")) {
 			try {
-				ConnectFour.loadFrom("save.txt");
-				printGrid();
+				game.loadFrom("save.txt");
 			} catch (FileNotFoundException e) {
 				System.err.println("Could not load game: " + e.getLocalizedMessage());
 				e.printStackTrace();
@@ -32,7 +41,7 @@ public class TextUI {
 			// Without creating this board first, during the scanner any input submitted will not be valid
 			for(int i = 0; i < 7; i++){
 		        for(int j = 0; j < 7; j++){
-		        	ConnectFour.board[i][j] = ".";
+		        	game.board[i][j] = ".";
 //		            System.out.print(board[i][j] + " ");
 		        }
 		        System.out.print("\n");
@@ -57,7 +66,7 @@ public class TextUI {
 	        	// This is used to place an character into the arrays 0123456
 	            int column = ascii -65;
 //	            System.out.println("X , Column: " + column);
-	            ConnectFour.putPlayerOnGrid(column, "X");
+	            game.putPlayerOnGrid(column, "X");
 	            turn = 1;
 	        }
 
@@ -67,7 +76,7 @@ public class TextUI {
 	        	// This is used to place an character into the arrays 0123456
 	            int column = ascii-97;
 //	            System.out.println("O , Column: "+ column);
-	            ConnectFour.putPlayerOnGrid(column,"O");
+	            game.putPlayerOnGrid(column,"O");
 	            turn = 2;
 	        }
 
@@ -76,16 +85,16 @@ public class TextUI {
 	        }
 
 			try {
-				ConnectFour.saveTo("save.txt");
+				game.saveTo("save.txt");
 			} catch (FileNotFoundException e) {
 				System.err.println("Could not save game: " + e.getLocalizedMessage());
 				e.printStackTrace();
 			}
-			ConnectFour.checkWin();
+			game.checkWin();
 	    }
 	}
 
-	public static String[] printGrid(){
+	public String[] printGrid(){
 
 		// Loop to print out the grid
 		String lines[] = new String[7];
@@ -94,8 +103,8 @@ public class TextUI {
 	    for(int i = 0; i < 7; i++){
 	    	StringBuilder str = new StringBuilder();
 	        for(int j = 0; j < 7; j++){
-	            System.out.print(ConnectFour.board[i][j] + " ");
-	            str.append(ConnectFour.board[i][j] + " ");
+	            System.out.print(game.board[i][j] + " ");
+	            str.append(game.board[i][j] + " ");
 	        }
 	        System.out.print("\n");
 	        lines[i] = str.toString();

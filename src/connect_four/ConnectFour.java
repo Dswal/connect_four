@@ -18,9 +18,9 @@ import java.util.Scanner;
 
 public class ConnectFour {
 
-	public static String[][] board = new String[7][7]; //7 down 7 wide
+	public String[][] board = new String[7][7]; //7 down 7 wide
 
-	public static void putPlayerOnGrid(int position, String playerXorO){
+	public void putPlayerOnGrid(int position, String playerXorO){
 
 	    // Check if row is occupied at all
 	    for(int i = 0; i < 7; i++){
@@ -49,7 +49,7 @@ public class ConnectFour {
 	    }
 	}
 
-	public static int checkWin(){
+	public int checkWin(){
 
 		// Make sure that the values of verticalLine and horizontalLine are empty before checking who wins
 	    String verticalLine = "";
@@ -143,9 +143,9 @@ public class ConnectFour {
 		return 0;
 	}
 
-	public static void saveTo(String fileName) throws FileNotFoundException{
+	public void saveTo(String fileName) throws FileNotFoundException{
 		try (PrintWriter out = new PrintWriter(fileName)) {
-			String[] rows = TextUI.printGrid();
+			String[] rows = new TextUI(this).printGrid();
 			for (String r : rows) {
 				out.print(r.replaceAll("\\.", "."));
 				out.println();
@@ -154,13 +154,13 @@ public class ConnectFour {
 
 	}  // automatically closes 'out' here
 
-	public static void loadFrom(String fileName) throws FileNotFoundException{
+	public void loadFrom(String fileName) throws FileNotFoundException{
 		Scanner in = new Scanner(new FileReader(fileName));
 
 		while(in.hasNext()){
 			for(int i = 0; i < 7; i++){
 				for(int j = 0; j < 7; j++){
-					ConnectFour.board[i][j] = in.next();
+					board[i][j] = in.next();
 				}
 			}
 		}
