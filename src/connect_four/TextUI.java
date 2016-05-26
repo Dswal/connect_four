@@ -18,7 +18,19 @@ public class TextUI {
 		textUI.playGame();
 
 	}
-	
+
+
+	/**
+	 * playGame is the main bulk of the code of the entire program.
+	 *
+	 * The program initialises and asks for a load save, if any value other than "yes", the game will create a new board.
+	 *
+	 * This then reopens player input to start playing the game using the supplied commands. By converting the ascii numerals
+	 * you can use these to place it into the column array list, allowing peices to fall onto the grid.
+	 *
+	 * After each turn the game saves.
+	 */
+
 	public void playGame(){
 		Scanner startingIn = new Scanner(System.in);
 
@@ -42,7 +54,6 @@ public class TextUI {
 			for(int i = 0; i < 7; i++){
 		        for(int j = 0; j < 7; j++){
 		        	game.board[i][j] = ".";
-//		            System.out.print(board[i][j] + " ");
 		        }
 		        System.out.print("\n");
 		    };
@@ -100,6 +111,13 @@ public class TextUI {
 			game.checkWin();
 	    }
 	}
+
+	/**
+	 *
+	 * printGrid uses a loop to build board and display it as a system output.
+	 * Also uses a stringbuilder to save information and return lines to allow for saving in another method.
+	 * @return
+	 */
 
 	public String[] printGrid(){
 

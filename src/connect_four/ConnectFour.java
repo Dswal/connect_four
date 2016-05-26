@@ -20,6 +20,19 @@ public class ConnectFour {
 
 	public String[][] board = new String[7][7]; //7 down 7 wide
 
+
+	/**
+	 * putPlayerOnGrid does exactly what it says. It checks through the rows to find an unoccupied space
+	 * denoted by the character "." when the character is found it will place an X or an O onto the space.
+	 * The X or O comes from the user input in the TextUI section.
+	 *
+	 * The loop starts at the top of the array and works itself downwards towards the bottom where the peices are.
+	 * This allows when the check finds an X or an O to place the peice -1 spaces above it.
+	 *
+	 * @param position
+	 * @param playerXorO
+	 */
+
 	public void putPlayerOnGrid(int position, String playerXorO){
 
 	    // Check if row is occupied at all
@@ -49,6 +62,15 @@ public class ConnectFour {
 	    }
 	}
 
+	/**
+	 *
+	 * checkWin loops through the colomns searching for the winning combination of 4 X's or O's.
+	 * However in the diagonal check, it works slightly different where it needs to loop through a smaller set of values
+	 * because you can't board check by using -1/-2/-3 of where the original peice is being checked. *It will try and check a negative
+	 * array value causing issues.
+	 *
+	 */
+
 	public int checkWin(){
 
 		// Make sure that the values of verticalLine and horizontalLine are empty before checking who wins
@@ -63,10 +85,12 @@ public class ConnectFour {
 	            verticalLine += board[i][j];
 	            if(verticalLine.contains("OOOO")){
 	                System.out.println("O Wins! Through a verticle line!");
+	                restartGame();
 	                return 1;
 	            }
 	            if(verticalLine.contains("XXXX")){
 	                System.out.println("X Wins! Through a verticle line!");
+	                restartGame();
 	                return 2;
 	            }
 
@@ -80,10 +104,12 @@ public class ConnectFour {
 	            horizontalLine += board[j][i];
 	            if(horizontalLine.contains("OOOO")){
 	                System.out.println("O Wins! Through a horizontal line!");
+	                restartGame();
 	                return 1;
 	            }
 	            if(horizontalLine.contains("XXXX")){
 	                System.out.println("X Wins! Through a horizontal line!");
+	                restartGame();
 	                return 2;
 	            }
 
@@ -98,6 +124,7 @@ public class ConnectFour {
 	    								&& board[j][i] == board[j+2][i+2]
 	    								&& board[j][i] == board[j+3][i+3]){
 	                System.out.println("O Wins! Through a Diagonal line up to the left!");
+	                restartGame();
 	                return 1;
 	    		}
 
@@ -110,6 +137,7 @@ public class ConnectFour {
 	    								&& board[j][i] == board[j+2][i+2]
 	    								&& board[j][i] == board[j+3][i+3]){
 	                System.out.println("X Wins! Through a Diagonal line up to the left!");
+	                restartGame();
 	                return 2;
 	    		}
 
@@ -122,6 +150,7 @@ public class ConnectFour {
 	    								&& board[j][i] == board[j+2][i-2]
 	    								&& board[j][i] == board[j+3][i-3]){
 	                System.out.println("O Wins! Through a Diagonal line up to the right!");
+	                restartGame();
 	                return 1;
 	    		}
 
@@ -134,6 +163,7 @@ public class ConnectFour {
 	    								&& board[j][i] == board[j+2][i-2]
 	    								&& board[j][i] == board[j+3][i-3]){
 	                System.out.println("X Wins! Through a Diagonal line up to the right!");
+	                restartGame();
 	                return 2;
 	    		}
 
@@ -142,6 +172,17 @@ public class ConnectFour {
 
 		return 0;
 	}
+
+
+	/**
+	 *
+	 * Simple saving method to write the entire array list into a textfile saved in the directory.
+	 * Grabs fileName from an input over in TextUI
+	 *
+	 * @param fileName
+	 * @throws FileNotFoundException
+	 */
+
 
 	public void saveTo(String fileName) throws FileNotFoundException{
 		try (PrintWriter out = new PrintWriter(fileName)) {
@@ -154,6 +195,14 @@ public class ConnectFour {
 
 	}  // automatically closes 'out' here
 
+	/**
+	 *
+	 * loadFrom uses the filereader to read the text and assign the values into the board array
+	 *
+	 * @param fileName
+	 * @throws FileNotFoundException
+	 */
+
 	public void loadFrom(String fileName) throws FileNotFoundException{
 		Scanner in = new Scanner(new FileReader(fileName));
 
@@ -164,5 +213,28 @@ public class ConnectFour {
 				}
 			}
 		}
+	}
+
+	public void restartGame(){
+		for(int i = 0; i < 7; i++){
+	        for(int j = 0; j < 7; j++){
+	        	board[i][j] = ".";
+	        }
+	        System.out.print("\n");
+	    };
+        System.out.print("\n");
+        System.out.print("Welcome to a new game!\n");
+	    for(int i = 0; i < 7; i++){
+	        for(int j = 0; j < 7; j++){
+	            System.out.print(board[i][j] + " ");
+	        }
+	        System.out.print("\n");
+	    }
+	    System.out.print("\n");
+        System.out.print("a b c d e f g \n");
+	    System.out.print("\n");
+	    System.out.print("Player 1 use lowercase a/b/c/d/e/f/g to place a peice\n");
+	    System.out.print("Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice\n");
+	    System.out.print("\n");
 	}
 }
