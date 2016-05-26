@@ -33,6 +33,10 @@ public class ConnectFour {
 	 * @param playerXorO
 	 */
 
+	public String getCell(int row, int col) {
+		return board[row][col];
+	}
+	
 	public void putPlayerOnGrid(int position, String playerXorO){
 
 	    // Check if row is occupied at all

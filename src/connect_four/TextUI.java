@@ -1,5 +1,16 @@
 package connect_four;
 
+/**
+ * TODO There is an issue with input / output, where the game will only run if there is a
+ * space after the intial "Do you want to load a game" dialogue. If the input/output
+ * files are removed from run parameters then the game will load normally with a few
+ * changes back of the code.
+ * - Reopening/reseting the scanner
+ */
+
+
+
+
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -42,6 +53,7 @@ public class TextUI {
 		if (startingInput.equalsIgnoreCase("yes")) {
 			try {
 				game.loadFrom("save.txt");
+				startingInput = startingInput + "aaaa\n";
 			} catch (FileNotFoundException e) {
 				System.err.println("Could not load game: " + e.getLocalizedMessage());
 				e.printStackTrace();
@@ -57,19 +69,22 @@ public class TextUI {
 		        }
 		        System.out.print("\n");
 		    };
+//		startingInput = startingInput + "aaaa\n";
 		turn = 1;
 		printGrid();
 
+//		startingInput = startingIn.next();
 
 	    // Opens up the scanner to allow input for the user
 		Scanner in = startingIn;
-		
+
+//		in = startingIn.next();
 		/**
 		 * This is a reminder, what is going on is the out/in text files wont write, so what I did was change the scanners to link to each other.
 		 * For the errors not to occur, you need to add a character after you type yes/no when asking to load a game. It will allow the game to continue as normal
 		 * If you do not, it errors during the while loop
 		 */
-		
+
 //	    Scanner in = new Scanner(System.in);
 
 	    while(in.hasNextLine()){

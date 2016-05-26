@@ -1,0 +1,22 @@
+Welcome to Connect Four.
+Would you like to load a game?
+
+
+
+
+
+
+
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+
+a b c d e f g 
+
+Player 1 use lowercase a/b/c/d/e/f/g to place a peice
+Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
+
