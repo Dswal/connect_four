@@ -51,7 +51,15 @@ public class TextUI {
 
 
 	    // Opens up the scanner to allow input for the user
-	    Scanner in = new Scanner(System.in);
+		Scanner in = startingIn;
+		
+		/**
+		 * This is a reminder, what is going on is the out/in text files wont write, so what I did was change the scanners to link to each other.
+		 * For the errors not to occur, you need to add a character after you type yes/no when asking to load a game. It will allow the game to continue as normal
+		 * If you do not, it errors during the while loop
+		 */
+		
+//	    Scanner in = new Scanner(System.in);
 
 	    while(in.hasNextLine()){
 
@@ -59,7 +67,6 @@ public class TextUI {
 	        // Forcing an input down to only one character allowed to be entered
 	        char pos = input.toCharArray()[0];
 	        int ascii = (int)pos;
-
 	        // If the character used is a capital it places an X
 	        if(ascii >= 65 && ascii <= 71 && turn == 2){
 	        	// Uses the ascii codes of the letters ABCDEFG and converts them into an integer by taking 65
