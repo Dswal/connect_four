@@ -57,17 +57,21 @@ public class GUI extends Application{
 
 	private void handleClick(final int row, final int column) {
 
-	if (player == 1) {
-		int col = column;
-		game.putPlayerOnGrid(col, "X");
-		player = 1;
-	} 
-	else {
-		int col = column;
-		game.putPlayerOnGrid(col, "O");
-		player = 2;
-		}
+//	if (player == 1) {
+//		int col = column;
+//		game.putPlayerOnGrid(col, "X");
+//		player = 1;
+//	} 
+//	else {
+//		int col = column;
+//		game.putPlayerOnGrid(col, "O");
+//		player = 2;
+//		}
 
+		
+		
+		
+		
 
 	}
 
