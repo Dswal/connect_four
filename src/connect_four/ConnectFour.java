@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+//import connect_four.gui.GUI;
 
 /**
  * This is connect four for two players.
@@ -19,6 +20,8 @@ import java.util.Scanner;
 public class ConnectFour {
 
 	public String[][] board = new String[7][7]; //7 down 7 wide
+	
+//	private GUI gui = new GUI();
 
 
 	/**
@@ -39,6 +42,7 @@ public class ConnectFour {
 	
 	public void putPlayerOnGrid(int position, String playerXorO){
 
+		
 	    // Check if row is occupied at all
 	    for(int i = 0; i < 7; i++){
 
@@ -51,6 +55,7 @@ public class ConnectFour {
 
 	            if (i  - 1 >= 0) {
 	                board[i - 1][position] = playerXorO;
+//	                gui.button[i - 1][position].setText(playerXorO);
 	            } else {
 	                System.out.println("Invalid Move!");
 	            }
@@ -62,6 +67,8 @@ public class ConnectFour {
 	        if(i == 6 && pos.equals(".")){
 	        	System.out.println("Placing Piece");
 	            board[i][position] = playerXorO;
+//	            buttonPosition = board[i][position]
+//	            gui.button[i][position].setText(playerXorO);
 	        }
 	    }
 	}
