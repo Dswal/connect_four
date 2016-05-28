@@ -123,7 +123,12 @@ public class TextUI {
 				System.err.println("Could not save game: " + e.getLocalizedMessage());
 				e.printStackTrace();
 			}
-			game.checkWin();
+			if (game.checkWin() == 1){
+				game.restartGame();
+			}
+			else if(game.checkWin() ==2){
+				game.restartGame();
+			}
 	    }
 	}
 

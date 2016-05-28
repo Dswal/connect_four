@@ -20,3 +20,158 @@ a b c d e f g
 Player 1 use lowercase a/b/c/d/e/f/g to place a peice
 Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
 
+Invalid Command, please use another Character.
+
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+
+a b c d e f g 
+
+Player 1 use lowercase a/b/c/d/e/f/g to place a peice
+Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
+
+Placing Piece
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+O . . . . . . 
+
+a b c d e f g 
+
+Player 1 use lowercase a/b/c/d/e/f/g to place a peice
+Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
+
+Placing: X above another slot
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+X . . . . . . 
+O . . . . . . 
+
+a b c d e f g 
+
+Player 1 use lowercase a/b/c/d/e/f/g to place a peice
+Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
+
+Placing: O above another slot
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+O . . . . . . 
+X . . . . . . 
+O . . . . . . 
+
+a b c d e f g 
+
+Player 1 use lowercase a/b/c/d/e/f/g to place a peice
+Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
+
+Placing: X above another slot
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+X . . . . . . 
+O . . . . . . 
+X . . . . . . 
+O . . . . . . 
+
+a b c d e f g 
+
+Player 1 use lowercase a/b/c/d/e/f/g to place a peice
+Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
+
+Placing Piece
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+X . . . . . . 
+O . . . . . . 
+X . . . . . . 
+O O . . . . . 
+
+a b c d e f g 
+
+Player 1 use lowercase a/b/c/d/e/f/g to place a peice
+Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
+
+Placing: X above another slot
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+X . . . . . . 
+O . . . . . . 
+X X . . . . . 
+O O . . . . . 
+
+a b c d e f g 
+
+Player 1 use lowercase a/b/c/d/e/f/g to place a peice
+Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
+
+Placing Piece
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+X . . . . . . 
+O . . . . . . 
+X X . . . . . 
+O O O . . . . 
+
+a b c d e f g 
+
+Player 1 use lowercase a/b/c/d/e/f/g to place a peice
+Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
+
+Placing Piece
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+X . . . . . . 
+O . . . . . . 
+X X . . . . . 
+O O O . X . . 
+
+a b c d e f g 
+
+Player 1 use lowercase a/b/c/d/e/f/g to place a peice
+Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
+
+Placing Piece
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+X . . . . . . 
+O . . . . . . 
+X X . . . . . 
+O O O . X O . 
+
+a b c d e f g 
+
+Player 1 use lowercase a/b/c/d/e/f/g to place a peice
+Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
+
+Placing Piece
+. . . . . . . 
+. . . . . . . 
+. . . . . . . 
+X . . . . . . 
+O . . . . . . 
+X X . . . . . 
+O O O . X O X 
+
+a b c d e f g 
+
+Player 1 use lowercase a/b/c/d/e/f/g to place a peice
+Player 2 use UPPERCASE A/B/C/D/E/F/G to place a peice
+

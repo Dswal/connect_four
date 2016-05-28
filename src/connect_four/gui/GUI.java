@@ -2,7 +2,9 @@ package connect_four.gui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -27,7 +29,7 @@ public class GUI extends Application{
 		pane.setStyle("-fx-background-color:red");
 
 
-		for (int row = 0; row < 7; row++) {
+		for (int row = 0; row < 6; row++) {
 			for (int col = 0; col < 7; col++) {
 				Button but = new Button("");
 				but.setStyle("-fx-font: 48px 'sans-serif';");
@@ -44,7 +46,7 @@ public class GUI extends Application{
 				button[row][col] = but;
 			}
 		}
-		Scene scene = new Scene(pane, 600, 600);
+		Scene scene = new Scene(pane, 700, 600);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
@@ -54,7 +56,7 @@ public class GUI extends Application{
 	        	game.board[i][j] = ".";
 	        }
 	        System.out.print("\n");
-	    };
+	    }
 	}
 
 	private void handleClick(final int row, final int column) {
@@ -62,89 +64,82 @@ public class GUI extends Application{
 	if (playerTurn == 1) {
 		int col = column;
 		game.putPlayerOnGrid(col, "X");
-//		button[row][col].setText("X");
 		playerTurn = 2;
 		ui.printGrid();
-		game.checkWin();
 
 	    for(int i = 0; i < 8; i++){
 
 	        String pos = game.board[i][col];
-
-// 			This checks to see if the  column selected is equal to the bottom column, do not subtract 1 to the column
-//	        This avoids missing the row at the bottom due to arrays being 1 below a number. Eg. 0/1/2/3/4/5, instead of 1/2/3/4/5/6
-
-//	        if(i == 6){
-//	        	System.out.println("Placing Piece");
-//	            button[i][col].setText("X");
-//	            return;
-//	        }
-
-
 
 	        // If the column does not equal ., then place it above that tile
 	        if(!pos.equals(".")) {
 
 	            if (i  - 1 >= 0) {
 	                button[i - 1][col].setText("X");
+	                if (game.checkWin() > 0){
+	                	gameOver();
+	                	restartGUI();
+	                }
 	            } else {
 	                System.out.println("Invalid Move!");
 	            }
-
 	        return;
-
 	        }
 	    }
-
-
-
 	}
 	else {
 		int col = column;
 		game.putPlayerOnGrid(col, "O");
-//		button[row][col].setText("O");
 		playerTurn = 1;
 		ui.printGrid();
-		game.checkWin();
-
 
 	    for(int i = 0; i < 7; i++){
 
 	        String pos = game.board[i][col];
 
-// 			This checks to see if the  column selected is equal to the bottom column, do not subtract 1 to the column
-//	        This avoids missing the row at the bottom due to arrays being 1 below a number. Eg. 0/1/2/3/4/5, instead of 1/2/3/4/5/6
-//	        if(i == 6){
-//	        	System.out.println("Placing Piece");
-//	            button[i][col].setText("O");
-//	            return;
-//	        }
-
 	        // If the column does not equal ., then place it above that tile
-	        if(!pos.equals(".")) {
+		        if(!pos.equals(".")) {
 
-	            if (i  - 1 >= 0) {
-//	                board[i - 1][col] = playerXorO;
-	                button[i - 1][col].setText("O");
-	            } else {
-	                System.out.println("Invalid Move!");
-	            }
-	        return;
+		            if (i  - 1 >= 0) {
+		                button[i - 1][col].setText("O");
+		                if (game.checkWin() > 0){
+		                	gameOver();
+		                	restartGUI();
+		                }
 
-	        }
-	    }
-
-
-
+		            } else {
+		                System.out.println("Invalid Move!");
+		            }
+		        return;
+		        }
+		    }
 		}
-
-
-
-
-
 	}
 
 
+	public void restartGUI(){
+		game = new ConnectFour();
+		ui = new TextUI(game);
+		for (int row = 0; row < 6; row++) {
+			for (int col = 0; col < 6; col++) {
+				button[row][col].setText("");
+			}
+		}
+		for(int i = 0; i < 7; i++){
+	        for(int j = 0; j < 7; j++){
+	        	game.board[i][j] = ".";
+	        }
+	        System.out.print("\n");
+	    }
+	}
+
+	private void gameOver() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Game Over");
+		alert.setHeaderText("Game Over");
+		alert.setContentText("Player " + playerTurn + " wins!");
+		alert.showAndWait();
+	}
 
 
 	public static void main(String[] args) {
