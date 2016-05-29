@@ -6,13 +6,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
+import java.util.Set;
 
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 import connect_four.ConnectFour;
@@ -34,7 +35,6 @@ public class GUI extends Application{
 		GridPane pane = new GridPane();
 		pane.setGridLinesVisible(true);
 		pane.setStyle("-fx-background-color:red");
-
 
 		for (int row = 0; row < 6; row++) {
 			for (int col = 0; col < 7; col++) {
@@ -63,7 +63,7 @@ public class GUI extends Application{
 		//Choice dialogue box (Component, Obeject message, String title, int option, int messageType, Icon, Object[] options, Object initial value)
 
 		int choice = JOptionPane.showOptionDialog(null,
-				"Would you like to load a game?",
+				"Welcome to Connect four!\nWould you like to load a game?",
 				"Load Game",
 				JOptionPane.YES_NO_CANCEL_OPTION,
 				JOptionPane.DEFAULT_OPTION,
